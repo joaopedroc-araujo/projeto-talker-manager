@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 const express = require('express');
+const generateToken = require('./generateToken');
 
 const app = express();
 app.use(express.json());
@@ -29,6 +30,10 @@ app.get('/talker/:id', async (req, res) => {
   }
 
   res.status(HTTP_OK_STATUS).json(foundTalker);
+});
+
+app.post('/login', generateToken, async (req, res) => {
+  res.status(200).json({ token: req.token });
 });
 
 app.listen(PORT, () => {
