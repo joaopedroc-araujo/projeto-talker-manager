@@ -65,7 +65,7 @@ router.get('/talker/:id', async (req, res) => {
     res.status(HTTP_OK_STATUS).json(foundTalker);
 });
 
-router.delete('/:id', validateToken, validateTalker, async (req, res) => {
+router.delete('/:id', validateToken, async (req, res) => {
     const { id } = req.params;
     try {
         const talkerFilePath = path.join(__dirname, '../talker.json');
