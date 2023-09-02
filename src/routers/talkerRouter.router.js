@@ -16,7 +16,7 @@ router.post('/', validateToken, validateTalker, async (req, res) => {
         talkers.push(talker);
         const updatedData = JSON.stringify(talkers);
         await fs.writeFile(talkerFilePath, updatedData);
-        console.log([talker]);
+        // console.log([talker]);
         res.status(201).json(talker);
     } catch (err) {
         res.status(400).json({ message: req.message });

@@ -28,12 +28,19 @@ function validateTalkWatchedAt(watchedAt) {
     return null;
 }
 
-// eslint-disable-next-line complexity
+function isRateMissing(rate) {
+    return rate === undefined || rate === null || rate === '';
+}
+
+function isRateInvalid(rate) {
+    return !Number.isInteger(rate) || rate < 1 || rate > 5;
+}
+
 function validateTalkRate(rate) {
-    if (rate === undefined || rate === null || rate === '') {
+    if (isRateMissing(rate)) {
         return 'O campo "rate" é obrigatório';
     }
-    if (!Number.isInteger(rate) || rate < 1 || rate > 5) {
+    if (isRateInvalid(rate)) {
         return 'O campo "rate" deve ser um número inteiro entre 1 e 5';
     }
     return null;
