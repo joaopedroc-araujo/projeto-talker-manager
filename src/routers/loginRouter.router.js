@@ -1,4 +1,3 @@
-// const fs = require('fs').promises;
 const express = require('express');
 const generateToken = require('../middlewares/generateToken');
 const validateFields = require('../middlewares/validateFields');
